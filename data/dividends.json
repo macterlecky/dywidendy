@@ -1,58 +1,45 @@
 {
   "meta": {
-    "generated_at": "2026-10-20T07:00:00Z",
-    "source": "PRZYKŁADOWE DANE (podmień je uruchamiając scripts/fetch_dividends.py)",
+    "generated_at": "2026-10-21T12:00:40Z",
+    "source": "Yahoo Finance (yfinance)",
     "horizon_days": 180,
-    "checked": 20,
-    "sample": true
+    "checked": 20
   },
   "items": [
     {
-      "ticker": "NNN",
-      "name": "NNN REIT",
+      "ticker": "ARR",
+      "name": "ARMOUR Residential REIT",
       "market": "USA",
       "currency": "USD",
-      "ex_date": "2026-10-27",
-      "pay_date": null,
-      "amount": 0.58,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.52,
-      "estimated": true
+      "ex_date": "2026-10-15",
+      "pay_date": "2026-10-29",
+      "amount": 0.24,
+      "amount_source": "ogłoszona",
+      "yield_pct": 22.71,
+      "estimated": false
     },
     {
       "ticker": "LTC",
       "name": "LTC Properties",
       "market": "USA",
       "currency": "USD",
-      "ex_date": "2026-10-28",
-      "pay_date": null,
+      "ex_date": "2026-10-22",
+      "pay_date": "2026-12-31",
       "amount": 0.19,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.25,
-      "estimated": true
+      "yield_pct": 5.32,
+      "estimated": false
     },
     {
       "ticker": "AGNC",
       "name": "AGNC Investment",
       "market": "USA",
       "currency": "USD",
-      "ex_date": "2026-10-29",
+      "ex_date": "2026-10-30",
       "pay_date": "2026-11-10",
       "amount": 0.12,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 11.88,
-      "estimated": false
-    },
-    {
-      "ticker": "ARR",
-      "name": "ARMOUR Residential REIT",
-      "market": "USA",
-      "currency": "USD",
-      "ex_date": "2026-10-30",
-      "pay_date": "2026-11-25",
-      "amount": 0.24,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 13.64,
+      "yield_pct": 16.36,
       "estimated": false
     },
     {
@@ -61,10 +48,22 @@
       "market": "USA",
       "currency": "USD",
       "ex_date": "2026-10-30",
-      "pay_date": "2026-11-14",
-      "amount": 0.3,
+      "pay_date": "2026-11-16",
+      "amount": 0.31,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 6.02,
+      "yield_pct": 6.58,
+      "estimated": false
+    },
+    {
+      "ticker": "NNN",
+      "name": "NNN REIT",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-10-30",
+      "pay_date": "2026-11-13",
+      "amount": 0.62,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 5.82,
       "estimated": false
     },
     {
@@ -73,22 +72,10 @@
       "market": "USA",
       "currency": "USD",
       "ex_date": "2026-10-30",
-      "pay_date": "2026-11-14",
-      "amount": 0.2695,
+      "pay_date": "2026-11-13",
+      "amount": 0.272,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 4.7,
-      "estimated": false
-    },
-    {
-      "ticker": "WTN",
-      "name": "Wittchen",
-      "market": "GPW",
-      "currency": "PLN",
-      "ex_date": "2026-11-09",
-      "pay_date": "2026-11-24",
-      "amount": 1.2,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.45,
+      "yield_pct": 5.76,
       "estimated": false
     },
     {
@@ -98,9 +85,21 @@
       "currency": "USD",
       "ex_date": "2026-12-10",
       "pay_date": null,
-      "amount": 0.01,
+      "amount": 0.25,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 0.02,
+      "yield_pct": 0.24,
+      "estimated": true
+    },
+    {
+      "ticker": "RBW",
+      "name": "Rainbow Tours",
+      "market": "GPW",
+      "currency": "PLN",
+      "ex_date": "2026-12-30",
+      "pay_date": null,
+      "amount": 8.6,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 7.07,
       "estimated": true
     }
   ],
@@ -108,37 +107,37 @@
     {
       "ticker": "CDR",
       "name": "CD Projekt",
-      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-16"
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-27"
     },
     {
       "ticker": "BLO",
       "name": "Bloober Team",
-      "reason": "brak danych w Yahoo (sprawdź symbol)"
+      "reason": "brak wypłat dywidendy"
     },
     {
       "ticker": "XTB",
       "name": "XTB",
-      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-05"
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-12"
     },
     {
       "ticker": "PKN",
       "name": "ORLEN",
-      "reason": "termin nieogłoszony, następna wypłata ok. 2027-08-01"
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-17"
     },
     {
       "ticker": "PZU",
       "name": "PZU",
-      "reason": "termin nieogłoszony, następna wypłata ok. 2027-09-24"
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-09-16"
     },
     {
-      "ticker": "RBW",
-      "name": "Rainbow Tours",
-      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-20"
+      "ticker": "WTN",
+      "name": "Wittchen",
+      "reason": "ostatnia dywidenda 2024-07-29, brak regularnego rytmu lub wypłaty wstrzymane"
     },
     {
       "ticker": "COG",
       "name": "Cognor Holding",
-      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-20"
+      "reason": "ostatnia dywidenda 2023-05-04, brak regularnego rytmu lub wypłaty wstrzymane"
     },
     {
       "ticker": "INPST",
@@ -153,7 +152,7 @@
     {
       "ticker": "TTWO",
       "name": "Take-Two Interactive",
-      "reason": "brak wypłat dywidendy"
+      "reason": "ostatnia dywidenda 2008-09-25, brak regularnego rytmu lub wypłaty wstrzymane"
     },
     {
       "ticker": "RKLB",
