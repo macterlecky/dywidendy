@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "generated_at": "2026-10-20T07:00:00Z",
+    "source": "PRZYKŁADOWE DANE (podmień je uruchamiając scripts/fetch_dividends.py)",
+    "horizon_days": 180,
+    "checked": 20,
+    "sample": true
+  },
+  "items": [
+    {
+      "ticker": "NNN",
+      "name": "NNN REIT",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-10-27",
+      "pay_date": null,
+      "amount": 0.58,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 5.52,
+      "estimated": true
+    },
+    {
+      "ticker": "LTC",
+      "name": "LTC Properties",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-10-28",
+      "pay_date": null,
+      "amount": 0.19,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 5.25,
+      "estimated": true
+    },
+    {
+      "ticker": "AGNC",
+      "name": "AGNC Investment",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-10-29",
+      "pay_date": "2026-11-10",
+      "amount": 0.12,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 11.88,
+      "estimated": false
+    },
+    {
+      "ticker": "ARR",
+      "name": "ARMOUR Residential REIT",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-10-30",
+      "pay_date": "2026-11-25",
+      "amount": 0.24,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 13.64,
+      "estimated": false
+    },
+    {
+      "ticker": "EPR",
+      "name": "EPR Properties",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-10-30",
+      "pay_date": "2026-11-14",
+      "amount": 0.3,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 6.02,
+      "estimated": false
+    },
+    {
+      "ticker": "O",
+      "name": "Realty Income",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-10-30",
+      "pay_date": "2026-11-14",
+      "amount": 0.2695,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 4.7,
+      "estimated": false
+    },
+    {
+      "ticker": "WTN",
+      "name": "Wittchen",
+      "market": "GPW",
+      "currency": "PLN",
+      "ex_date": "2026-11-09",
+      "pay_date": "2026-11-24",
+      "amount": 1.2,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 5.45,
+      "estimated": false
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-12-10",
+      "pay_date": null,
+      "amount": 0.01,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 0.02,
+      "estimated": true
+    }
+  ],
+  "without_dividend": [
+    {
+      "ticker": "CDR",
+      "name": "CD Projekt",
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-16"
+    },
+    {
+      "ticker": "BLO",
+      "name": "Bloober Team",
+      "reason": "brak danych w Yahoo (sprawdź symbol)"
+    },
+    {
+      "ticker": "XTB",
+      "name": "XTB",
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-05"
+    },
+    {
+      "ticker": "PKN",
+      "name": "ORLEN",
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-08-01"
+    },
+    {
+      "ticker": "PZU",
+      "name": "PZU",
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-09-24"
+    },
+    {
+      "ticker": "RBW",
+      "name": "Rainbow Tours",
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-20"
+    },
+    {
+      "ticker": "COG",
+      "name": "Cognor Holding",
+      "reason": "termin nieogłoszony, następna wypłata ok. 2027-06-20"
+    },
+    {
+      "ticker": "INPST",
+      "name": "InPost",
+      "reason": "brak wypłat dywidendy"
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel",
+      "reason": "ostatnia dywidenda 2024-08-07, brak regularnego rytmu lub wypłaty wstrzymane"
+    },
+    {
+      "ticker": "TTWO",
+      "name": "Take-Two Interactive",
+      "reason": "brak wypłat dywidendy"
+    },
+    {
+      "ticker": "RKLB",
+      "name": "Rocket Lab",
+      "reason": "brak wypłat dywidendy"
+    },
+    {
+      "ticker": "LUNR",
+      "name": "Intuitive Machines",
+      "reason": "brak wypłat dywidendy"
+    }
+  ],
+  "errors": []
+}

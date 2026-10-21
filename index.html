@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nadchodzące dywidendy</title>
+
+  <style>
+    /* ---------- Motyw: zmień kolory w jednym miejscu ---------- */
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f6f8;
+      --surface: #ffffff;
+      --text: #15171c;
+      --muted: #5b6370;
+      --line: #e2e5ea;
+      --accent: #0f766e;
+      --accent-soft: #d8f1ed;
+      --warn: #8a4b08;
+      --warn-bg: #fdf0d2;
+      --err: #b42318;
+      --err-bg: #fde7e4;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 4px 16px rgba(16, 24, 40, .05);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --surface: #171a21;
+        --text: #eceef2;
+        --muted: #9aa3b2;
+        --line: #272c36;
+        --accent: #5eead4;
+        --accent-soft: #12332f;
+        --warn: #fcd34d;
+        --warn-bg: #3a2e0f;
+        --err: #fda29b;
+        --err-bg: #3b1612;
+        --shadow: none;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page { max-width: 980px; margin: 0 auto; padding: clamp(16px, 4vw, 40px); }
+    h1 { margin: 0 0 4px; font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -.02em; }
+    .muted { color: var(--muted); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    /* ---------- Komunikaty ---------- */
+    .notice { margin-top: 16px; padding: 10px 14px; border-radius: 10px; font-size: .92rem; background: var(--warn-bg); color: var(--warn); }
+    .notice + .notice { margin-top: 8px; }
+    .state { padding: 36px 20px; text-align: center; }
+    .state strong { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+    .state--error strong { color: var(--err); }
+    .btn {
+      margin-top: 14px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 10px;
+      background: var(--surface); color: var(--text); font: inherit; font-weight: 600; cursor: pointer;
+    }
+    .btn:hover { border-color: var(--accent); }
+    .btn:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* ---------- Tabela ---------- */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 14px 16px; text-align: left; vertical-align: top; }
+    thead th {
+      font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--muted); background: color-mix(in srgb, var(--line) 35%, var(--surface));
+      border-bottom: 1px solid var(--line); white-space: nowrap;
+    }
+    tbody tr + tr td { border-top: 1px solid var(--line); }
+    tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+    .num { text-align: right; }
+    .name { font-weight: 600; }
+    .ticker { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .92rem; font-weight: 600; }
+    .sub { display: block; margin-top: 2px; font-size: .82rem; color: var(--muted); }
+    .amount { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+    .chip, .badge {
+      display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: .72rem; font-weight: 600; line-height: 1.6;
+      vertical-align: middle;
+    }
+    .chip { margin-left: 6px; background: var(--accent-soft); color: var(--accent); }
+    .badge { margin-left: 6px; background: var(--warn-bg); color: var(--warn); cursor: help; }
+    .badge--info { background: var(--accent-soft); color: var(--accent); }
+
+    /* ---------- Szkielet ładowania ---------- */
+    .sk {
+      display: block; height: 1em; width: 70%; border-radius: 6px;
+      background: linear-gradient(90deg, var(--line) 0%, color-mix(in srgb, var(--line) 40%, transparent) 50%, var(--line) 100%);
+      background-size: 200% 100%; animation: shimmer 1.3s linear infinite;
+    }
+    .sk--short { width: 40%; }
+    @keyframes shimmer { to { background-position: -200% 0; } }
+    @media (prefers-reduced-motion: reduce) { .sk { animation: none; } }
+
+    /* ---------- Spółki bez dywidendy ---------- */
+    .none summary { padding: 14px 18px; cursor: pointer; font-weight: 600; }
+    .none ul { margin: 0; padding: 0 18px 16px 38px; color: var(--muted); font-size: .92rem; }
+    .none li { margin: 4px 0; }
+    .none li strong { color: var(--text); }
+
+    .legend { margin-top: 20px; font-size: .84rem; color: var(--muted); }
+
+    /* ---------- Telefon: wiersze jako karty ---------- */
+    @media (max-width: 720px) {
+      thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+      tbody tr {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; padding: 14px 16px;
+      }
+      tbody tr + tr { border-top: 1px solid var(--line); }
+      tbody tr + tr td { border-top: 0; }
+      tbody tr:hover td { background: none; }
+      td { padding: 0; }
+      td::before {
+        content: attr(data-label); display: block; margin-bottom: 1px;
+        font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+      }
+      td[data-label="Nazwa"] { grid-column: 1 / -1; }
+      td[data-label="Nazwa"]::before, td[data-label="Ticker"]::before { display: none; }
+      td[data-label="Ticker"] { position: absolute; right: 16px; }
+      td[data-label="Kwota / stopa"] { grid-column: 1 / -1; text-align: left; }
+      tbody tr { position: relative; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header>
+      <h1>Nadchodzące dywidendy</h1>
+      <p class="muted" id="meta">Ładowanie danych…</p>
+    </header>
+
+    <div id="notices"></div>
+
+    <section class="card" aria-label="Tabela dywidend">
+      <div id="state" class="state" hidden role="status" aria-live="polite"></div>
+      <div class="table-wrap" id="table-wrap">
+        <table id="table" aria-busy="true">
+          <caption class="sr-only">Nadchodzące dywidendy spółek z portfela</caption>
+          <thead>
+            <tr>
+              <th scope="col">Nazwa</th>
+              <th scope="col">Ticker</th>
+              <th scope="col">Data ex-dividend</th>
+              <th scope="col">Data wypłaty</th>
+              <th scope="col" class="num">Kwota / stopa</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="card none" id="none" hidden>
+      <summary id="none-title"></summary>
+      <ul id="none-list"></ul>
+    </details>
+
+    <p class="legend">
+      <span class="badge">szacunek</span> oznacza datę wyliczoną z rytmu poprzednich wypłat, bo spółka nie ogłosiła jeszcze terminu.
+      Stopa to suma dywidend z ostatnich 12 miesięcy względem bieżącego kursu. Dane z Yahoo Finance mogą się spóźniać lub zawierać błędy,
+      więc daty i kwoty potwierdzaj w komunikatach spółek. To nie jest rekomendacja inwestycyjna.
+    </p>
+  </main>
+
+  <script>
+    "use strict";
+
+    const DATA_URL = "data/dividends.json";   // ścieżka do pliku generowanego przez skrypt
+    const STALE_AFTER_DAYS = 10;              // po tylu dniach pokazujemy ostrzeżenie o starych danych
+
+    // ---------- Pomocnicze ----------
+    const $ = (id) => document.getElementById(id);
+    const dateFmt = new Intl.DateTimeFormat("pl-PL", { day: "numeric", month: "short", year: "numeric" });
+    const dateTimeFmt = new Intl.DateTimeFormat("pl-PL", { dateStyle: "medium", timeStyle: "short" });
+    const numFmt = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 2 });
+    const relFmt = new Intl.RelativeTimeFormat("pl", { numeric: "auto" });
+    const DAY = 86_400_000;
+
+    const parseDay = (iso) => { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d); };
+    const today = () => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); };
+
+    /** Tworzy element DOM. Teksty wstawiamy przez textContent, więc dane z JSON nie mogą wstrzyknąć HTML. */
+    function el(tag, { text, className, title, label } = {}, ...children) {
+      const node = document.createElement(tag);
+      if (text !== undefined) node.textContent = text;
+      if (className) node.className = className;
+      if (title) node.title = title;
+      if (label) node.dataset.label = label;
+      node.append(...children.filter(Boolean));
+      return node;
+    }
+
+    function formatMoney(amount, currency) {
+      if (amount == null) return null;
+      if (!currency) return numFmt.format(amount);
+      try {
+        return new Intl.NumberFormat("pl-PL", { style: "currency", currency, minimumFractionDigits: 2, maximumFractionDigits: 4 }).format(amount);
+      } catch {
+        return `${numFmt.format(amount)} ${currency}`;
+      }
+    }
+
+    function relativeDay(iso) {
+      const diff = Math.round((parseDay(iso) - today()) / DAY);
+      return relFmt.format(diff, "day");
+    }
+
+    // ---------- Stany widoku ----------
+    function setState(kind, title, message, onRetry) {
+      const box = $("state");
+      const table = $("table");
+      box.hidden = kind === "loading" || kind === "ok";
+      $("table-wrap").hidden = kind === "empty" || kind === "error";
+      table.setAttribute("aria-busy", String(kind === "loading"));
+      box.className = "state" + (kind === "error" ? " state--error" : "");
+      box.replaceChildren();
+      if (box.hidden) return;
+      box.append(el("strong", { text: title }), el("span", { className: "muted", text: message }));
+      if (onRetry) {
+        const btn = el("button", { className: "btn", text: "Spróbuj ponownie" });
+        btn.type = "button";
+        btn.addEventListener("click", onRetry);
+        box.append(el("div", {}, btn));
+      }
+    }
+
+    function showSkeleton() {
+      const rows = Array.from({ length: 5 }, () =>
+        el("tr", {}, ...["Nazwa", "Ticker", "Data ex-dividend", "Data wypłaty", "Kwota / stopa"].map((label, i) =>
+          el("td", { label, className: i === 4 ? "num" : "" }, el("span", { className: "sk" + (i % 2 ? " sk--short" : "") })))));
+      $("rows").replaceChildren(...rows);
+      setState("loading");
+    }
+
+    // ---------- Renderowanie ----------
+    function renderRow(item, now) {
+      const exPassed = item.ex_date && parseDay(item.ex_date) < now;
+
+      const exCell = el("td", { label: "Data ex-dividend" });
+      if (item.ex_date) {
+        exCell.append(el("span", { text: dateFmt.format(parseDay(item.ex_date)) }));
+        if (item.estimated) exCell.append(el("span", { className: "badge", text: "szacunek", title: "Termin wyliczony z rytmu poprzednich wypłat, spółka jeszcze go nie ogłosiła." }));
+        else if (exPassed) exCell.append(el("span", { className: "badge badge--info", text: "po dniu dywidendy", title: "Dzień ex-dividend już minął, czekasz na wypłatę." }));
+        exCell.append(el("span", { className: "sub", text: relativeDay(item.ex_date) }));
+      } else {
+        exCell.append(el("span", { className: "muted", text: "—" }));
+      }
+
+      const payCell = el("td", { label: "Data wypłaty" });
+      payCell.append(item.pay_date
+        ? el("span", { text: dateFmt.format(parseDay(item.pay_date)) })
+        : el("span", { className: "muted", text: "—" }));
+      if (item.pay_date) payCell.append(el("span", { className: "sub", text: relativeDay(item.pay_date) }));
+
+      const money = formatMoney(item.amount, item.currency);
+      const amountCell = el("td", { label: "Kwota / stopa", className: "num" });
+      amountCell.append(el("span", { className: "amount", text: money ?? "—" }));
+      const notes = [];
+      if (item.yield_pct != null) notes.push(`stopa ${numFmt.format(item.yield_pct)}%`);
+      if (money && item.amount_source === "ostatnia wypłata") notes.push("wg ostatniej wypłaty");
+      if (notes.length) amountCell.append(el("span", { className: "sub", text: notes.join(" · ") }));
+
+      return el("tr", {},
+        el("td", { label: "Nazwa" }, el("span", { className: "name", text: item.name }), el("span", { className: "chip", text: item.market })),
+        el("td", { label: "Ticker" }, el("span", { className: "ticker", text: item.ticker })),
+        exCell, payCell, amountCell);
+    }
+
+    function renderNotices(data) {
+      const box = $("notices");
+      const messages = [];
+      if (data.meta?.sample) messages.push("To dane przykładowe. Uruchom skrypt lub workflow GitHub Actions, aby pobrać prawdziwe dane.");
+      const generated = data.meta?.generated_at && new Date(data.meta.generated_at);
+      if (generated && (Date.now() - generated) / DAY > STALE_AFTER_DAYS) {
+        messages.push(`Dane mogą być nieaktualne: ostatnia aktualizacja ${dateTimeFmt.format(generated)}.`);
+      }
+      if (data.errors?.length) messages.push(`Nie udało się pobrać danych dla: ${data.errors.map((e) => e.ticker).join(", ")}.`);
+      box.replaceChildren(...messages.map((text) => el("div", { className: "notice", text })));
+    }
+
+    function render(data) {
+      if (!data || !Array.isArray(data.items)) throw new Error("Nieprawidłowy format pliku JSON.");
+      const now = today();
+      const upcoming = data.items
+        .filter((item) => [item.ex_date, item.pay_date].some((d) => d && parseDay(d) >= now))   // nie pokazuj tego, co już minęło
+        .sort((a, b) => (a.ex_date || a.pay_date).localeCompare(b.ex_date || b.pay_date) || a.ticker.localeCompare(b.ticker));
+
+      const generated = data.meta?.generated_at && new Date(data.meta.generated_at);
+      $("meta").textContent = [
+        generated ? `Ostatnia aktualizacja: ${dateTimeFmt.format(generated)}` : null,
+        data.meta?.source,
+        data.meta?.checked ? `sprawdzono ${data.meta.checked} spółek` : null,
+      ].filter(Boolean).join(" · ");
+      renderNotices(data);
+
+      const none = data.without_dividend ?? [];
+      $("none").hidden = none.length === 0;
+      $("none-title").textContent = `Bez zapowiedzianej dywidendy (${none.length})`;
+      $("none-list").replaceChildren(...none.map((n) =>
+        el("li", {}, el("strong", { text: n.ticker }), ` ${n.name}: ${n.reason}`)));
+
+      if (upcoming.length === 0) {
+        $("rows").replaceChildren();
+        setState("empty", "Brak nadchodzących dywidend",
+          `Żadna ze spółek w portfelu nie ma teraz zapowiedzianej dywidendy (horyzont: ${data.meta?.horizon_days ?? "?"} dni).`);
+        return;
+      }
+      $("rows").replaceChildren(...upcoming.map((item) => renderRow(item, now)));
+      setState("ok");
+    }
+
+    // ---------- Pobieranie danych ----------
+    async function load() {
+      showSkeleton();
+      try {
+        const response = await fetch(DATA_URL, { cache: "no-cache" });
+        if (!response.ok) throw new Error(`Serwer odpowiedział statusem ${response.status}.`);
+        render(await response.json());
+      } catch (error) {
+        console.error(error);
+        $("rows").replaceChildren();
+        $("meta").textContent = "Nie udało się wczytać danych.";
+        setState("error", "Nie udało się wczytać dywidend", error.message || "Sprawdź połączenie i spróbuj ponownie.", load);
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>
