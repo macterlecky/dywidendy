@@ -1,35 +1,11 @@
 {
   "meta": {
-    "generated_at": "2026-10-21T12:00:40Z",
+    "generated_at": "2026-10-26T10:56:52Z",
     "source": "Yahoo Finance (yfinance)",
     "horizon_days": 180,
     "checked": 20
   },
   "items": [
-    {
-      "ticker": "ARR",
-      "name": "ARMOUR Residential REIT",
-      "market": "USA",
-      "currency": "USD",
-      "ex_date": "2026-10-15",
-      "pay_date": "2026-10-29",
-      "amount": 0.24,
-      "amount_source": "ogłoszona",
-      "yield_pct": 22.71,
-      "estimated": false
-    },
-    {
-      "ticker": "LTC",
-      "name": "LTC Properties",
-      "market": "USA",
-      "currency": "USD",
-      "ex_date": "2026-10-22",
-      "pay_date": "2026-12-31",
-      "amount": 0.19,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.32,
-      "estimated": false
-    },
     {
       "ticker": "AGNC",
       "name": "AGNC Investment",
@@ -39,7 +15,7 @@
       "pay_date": "2026-11-10",
       "amount": 0.12,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 16.36,
+      "yield_pct": 16.29,
       "estimated": false
     },
     {
@@ -51,7 +27,7 @@
       "pay_date": "2026-11-16",
       "amount": 0.31,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 6.58,
+      "yield_pct": 6.51,
       "estimated": false
     },
     {
@@ -63,7 +39,7 @@
       "pay_date": "2026-11-13",
       "amount": 0.62,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.82,
+      "yield_pct": 5.8,
       "estimated": false
     },
     {
@@ -75,7 +51,31 @@
       "pay_date": "2026-11-13",
       "amount": 0.272,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.76,
+      "yield_pct": 5.71,
+      "estimated": false
+    },
+    {
+      "ticker": "ARR",
+      "name": "ARMOUR Residential REIT",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-11-16",
+      "pay_date": "2026-11-27",
+      "amount": 0.24,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 22.36,
+      "estimated": false
+    },
+    {
+      "ticker": "LTC",
+      "name": "LTC Properties",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-11-20",
+      "pay_date": "2026-12-31",
+      "amount": 0.19,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 5.21,
       "estimated": false
     },
     {
@@ -87,7 +87,7 @@
       "pay_date": null,
       "amount": 0.25,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 0.24,
+      "yield_pct": 0.25,
       "estimated": true
     },
     {
@@ -99,7 +99,7 @@
       "pay_date": null,
       "amount": 8.6,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 7.07,
+      "yield_pct": 7.03,
       "estimated": true
     }
   ],
