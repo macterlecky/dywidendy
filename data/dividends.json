@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-26T10:56:52Z",
+    "generated_at": "2026-11-02T13:20:23Z",
     "source": "Yahoo Finance (yfinance)",
     "horizon_days": 180,
     "checked": 20
@@ -14,20 +14,8 @@
       "ex_date": "2026-10-30",
       "pay_date": "2026-11-10",
       "amount": 0.12,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 16.29,
-      "estimated": false
-    },
-    {
-      "ticker": "EPR",
-      "name": "EPR Properties",
-      "market": "USA",
-      "currency": "USD",
-      "ex_date": "2026-10-30",
-      "pay_date": "2026-11-16",
-      "amount": 0.31,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 6.51,
+      "amount_source": "ogłoszona",
+      "yield_pct": 16.65,
       "estimated": false
     },
     {
@@ -38,8 +26,8 @@
       "ex_date": "2026-10-30",
       "pay_date": "2026-11-13",
       "amount": 0.62,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.8,
+      "amount_source": "ogłoszona",
+      "yield_pct": 5.95,
       "estimated": false
     },
     {
@@ -50,7 +38,7 @@
       "ex_date": "2026-10-30",
       "pay_date": "2026-11-13",
       "amount": 0.272,
-      "amount_source": "ostatnia wypłata",
+      "amount_source": "ogłoszona",
       "yield_pct": 5.71,
       "estimated": false
     },
@@ -63,7 +51,7 @@
       "pay_date": "2026-11-27",
       "amount": 0.24,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 22.36,
+      "yield_pct": 23.13,
       "estimated": false
     },
     {
@@ -75,7 +63,19 @@
       "pay_date": "2026-12-31",
       "amount": 0.19,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.21,
+      "yield_pct": 5.09,
+      "estimated": false
+    },
+    {
+      "ticker": "EPR",
+      "name": "EPR Properties",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-11-30",
+      "pay_date": "2026-12-15",
+      "amount": 0.31,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 6.34,
       "estimated": false
     },
     {
@@ -99,7 +99,7 @@
       "pay_date": null,
       "amount": 8.6,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 7.03,
+      "yield_pct": 7.22,
       "estimated": true
     }
   ],
