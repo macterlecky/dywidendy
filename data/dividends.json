@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-02T13:20:23Z",
+    "generated_at": "2026-11-09T13:45:48Z",
     "source": "Yahoo Finance (yfinance)",
     "horizon_days": 180,
     "checked": 20
@@ -15,7 +15,7 @@
       "pay_date": "2026-11-10",
       "amount": 0.12,
       "amount_source": "ogłoszona",
-      "yield_pct": 16.65,
+      "yield_pct": 16.4,
       "estimated": false
     },
     {
@@ -27,7 +27,7 @@
       "pay_date": "2026-11-13",
       "amount": 0.62,
       "amount_source": "ogłoszona",
-      "yield_pct": 5.95,
+      "yield_pct": 5.93,
       "estimated": false
     },
     {
@@ -39,7 +39,7 @@
       "pay_date": "2026-11-13",
       "amount": 0.272,
       "amount_source": "ogłoszona",
-      "yield_pct": 5.71,
+      "yield_pct": 5.5,
       "estimated": false
     },
     {
@@ -51,7 +51,7 @@
       "pay_date": "2026-11-27",
       "amount": 0.24,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 23.13,
+      "yield_pct": 22.86,
       "estimated": false
     },
     {
@@ -75,7 +75,7 @@
       "pay_date": "2026-12-15",
       "amount": 0.31,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 6.34,
+      "yield_pct": 6.15,
       "estimated": false
     },
     {
@@ -87,7 +87,7 @@
       "pay_date": null,
       "amount": 0.25,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 0.25,
+      "yield_pct": 0.28,
       "estimated": true
     },
     {
@@ -99,7 +99,7 @@
       "pay_date": null,
       "amount": 8.6,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 7.22,
+      "yield_pct": 6.99,
       "estimated": true
     }
   ],
