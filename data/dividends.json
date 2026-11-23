@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-16T13:29:59Z",
+    "generated_at": "2026-11-23T15:50:08Z",
     "source": "Yahoo Finance (yfinance)",
     "horizon_days": 180,
     "checked": 20
@@ -14,20 +14,8 @@
       "ex_date": "2026-11-16",
       "pay_date": "2026-11-27",
       "amount": 0.24,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 24.14,
-      "estimated": false
-    },
-    {
-      "ticker": "LTC",
-      "name": "LTC Properties",
-      "market": "USA",
-      "currency": "USD",
-      "ex_date": "2026-11-20",
-      "pay_date": "2026-12-31",
-      "amount": 0.19,
-      "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.27,
+      "amount_source": "ogłoszona",
+      "yield_pct": 25.86,
       "estimated": false
     },
     {
@@ -39,7 +27,7 @@
       "pay_date": "2026-12-09",
       "amount": 0.12,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 17.5,
+      "yield_pct": 18.15,
       "estimated": false
     },
     {
@@ -51,7 +39,7 @@
       "pay_date": "2026-12-15",
       "amount": 0.31,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 6.08,
+      "yield_pct": 6.17,
       "estimated": false
     },
     {
@@ -63,7 +51,7 @@
       "pay_date": "2026-12-15",
       "amount": 0.272,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.53,
+      "yield_pct": 5.57,
       "estimated": false
     },
     {
@@ -71,12 +59,24 @@
       "name": "NVIDIA",
       "market": "USA",
       "currency": "USD",
-      "ex_date": "2026-12-10",
-      "pay_date": null,
+      "ex_date": "2026-12-02",
+      "pay_date": "2026-12-23",
       "amount": 0.25,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 0.32,
-      "estimated": true
+      "yield_pct": 0.31,
+      "estimated": false
+    },
+    {
+      "ticker": "LTC",
+      "name": "LTC Properties",
+      "market": "USA",
+      "currency": "USD",
+      "ex_date": "2026-12-23",
+      "pay_date": "2026-12-31",
+      "amount": 0.19,
+      "amount_source": "ostatnia wypłata",
+      "yield_pct": 5.43,
+      "estimated": false
     },
     {
       "ticker": "RBW",
@@ -87,7 +87,7 @@
       "pay_date": null,
       "amount": 8.6,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 7.05,
+      "yield_pct": 7.54,
       "estimated": true
     },
     {
@@ -99,7 +99,7 @@
       "pay_date": null,
       "amount": 0.62,
       "amount_source": "ostatnia wypłata",
-      "yield_pct": 5.93,
+      "yield_pct": 6.06,
       "estimated": true
     }
   ],
